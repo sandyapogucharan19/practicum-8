@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevStream - Responsive Layout (Prac 8)</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f7ff;
+            color: #263238;
+        }
+
+        /* Header and Menu */
+        header {
+            background-color: #111827;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-toggle {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        nav {
+            background-color: #1e40af;
+            padding: 12px 25px;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav.collapsed {
+            display: none;
+        }
+
+        /* Main Page Layout */
+        .page-container {
+            display: flex;
+            gap: 20px;
+            padding: 25px;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        main {
+            flex: 3;
+        }
+
+        /* Advertisement Section */
+        aside {
+            flex: 1;
+            background: linear-gradient(180deg, #dbeafe, #bfdbfe);
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Desktop Card Grid */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #c5cae9;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 7px;
+        }
+
+        .card h3 {
+            color: #2563eb;
+        }
+
+        footer {
+            background-color: #111827;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* Desktop View */
+        @media (min-width: 1025px) {
+            body {
+                font-size: 16px;
+            }
+
+            .card-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Tablet View */
+        @media (max-width: 1024px) and (min-width: 601px) {
+            body {
+                font-size: 15px;
+            }
+
+            .page-container {
+                flex-direction: column;
+            }
+
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile View */
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+
+            .page-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            /* Change Grid into Flexbox */
+            .card-container {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            /* Horizontal Card Layout */
+            .card {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .card img {
+                width: 100px;
+                height: 80px;
+                object-fit: cover;
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2 style="margin:0;">💻 DevStream Platform</h2>
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰ Menu
+        </button>
+    </header>
+
+    <nav id="main-nav">
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#languages">Programming Languages</a>
+        <a href="#projects">Projects</a>
+    </nav>
+
+    <div class="page-container">
+
+        <main>
+            <h1>Explore Programming Courses</h1>
+
+            <div class="card-container">
+
+                <div class="card">
+                    <img src="https://placehold.co/300x200/1e40af/white?text=HTML+CSS"
+                         alt="HTML and CSS">
+                    <div>
+                        <h3>HTML & CSS</h3>
+                        <p>Learn web design and create attractive websites.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://placehold.co/300x200/2563eb/white?text=JavaScript"
+                         alt="JavaScript">
+                    <div>
+                        <h3>JavaScript</h3>
+                        <p>Learn interactive web development and scripting.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://placehold.co/300x200/111827/white?text=Python"
+                         alt="Python Programming">
+                    <div>
+                        <h3>Python Programming</h3>
+                        <p>Learn Python programming and build applications.</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <aside>
+            <h3>📢 Special Announcement</h3>
+            <p><strong>Start Your Coding Journey!</strong></p>
+            <p>Join DevStream and improve your programming skills through practical coding and real-world projects.</p>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>© 2026 DevStream Developer Platform</p>
+        <p>Learn. Code. Build. Innovate.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("main-nav")
+                .classList.toggle("collapsed");
+        }
+    </script>
+
+</body>
+</html>
